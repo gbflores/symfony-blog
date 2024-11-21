@@ -1,0 +1,36 @@
+{# templates/new/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Teste de Blog em Symfony{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4">Última Notícia</h1>
+    {% if newDetail %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <a href="{{ path('app_new_detail', {id: newDetail.id}) }}">{{ newDetail.title }}</a>
+                </h2>
+                <p class="card-text">{{ newDetail.content }}</p>
+            </div>
+        </div>
+    {% else %}
+        <p>Nenhuma notícia disponível.</p>
+    {% endif %}
+
+    <h1 class="mb-4">Outras Notícias</h1>
+    {% if otherNews|length > 0 %}
+        <div class="list-group">
+            {% for othernew in otherNews %}
+                <a href="{{ path('app_new_detail', {id: othernew.id}) }}" class="list-group-item list-group-item-action">
+                    {{ othernew.title }}
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Nenhuma outra notícia disponível.</p>
+    {% endif %}
+</div>
+{% endblock %}

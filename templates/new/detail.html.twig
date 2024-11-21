@@ -1,0 +1,30 @@
+{# templates/new/detail.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ new.title }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <a href="{{ path('app_home') }}" class="btn btn-secondary mb-4">Voltar para a página inicial</a>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h1 class="card-title">{{ new.title }}</h1>
+                <p class="card-text">{{ new.content }}</p>
+            </div>
+        </div>
+
+        <h2>Outras Notícias</h2>
+        {% if otherNews|length > 0 %}
+            <div class="list-group">
+                {% for othernew in otherNews %}
+                    <a href="{{ path('app_new_detail', {id: othernew.id}) }}" class="list-group-item list-group-item-action">
+                        {{ othernew.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Nenhuma outra notícia disponível.</p>
+        {% endif %}
+    </div>
+{% endblock %}
