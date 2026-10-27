@@ -1,4 +1,37 @@
-# Primeiro projeto teste com Symfony
+# Symfony Blog
+
+A small news blog built to learn **Symfony 7** coming from years of Laravel: listing and detail pages,
+Doctrine entities, migrations, fixtures and Twig templates, then a write-up comparing both frameworks.
+
+## What's inside
+
+- `News` entity (title, content, publish date) with Doctrine ORM and migrations on SQLite
+- Fixtures that seed sample articles (`doctrine/doctrine-fixtures-bundle`)
+- Controller with index and detail routes; the detail page lists the other articles
+- Twig templates styled with Bootstrap
+
+**Stack:** PHP 8.2+ · Symfony 7.1 · Doctrine · Twig · SQLite
+
+## Running locally
+
+```bash
+git clone https://github.com/gbflores/symfony-blog.git
+cd symfony-blog
+composer install
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate -n
+php bin/console doctrine:fixtures:load -n
+symfony server:start     # or: php -S localhost:8000 -t public
+```
+
+## Takeaways (Laravel → Symfony)
+
+Symfony felt very close to Laravel for this kind of project (MVC, Twig vs. Blade, migrations and console
+generators), with a bit more manual setup and a more flexible, explicit approach to queries. Laravel was still
+faster for me to ship with, mostly from familiarity. The full step-by-step log is below, in Portuguese.
+
+<details>
+<summary>📓 Diário de estudo (PT-BR)</summary>
 
 ## Passo A passo para o primeiro BLOG
 
@@ -94,3 +127,9 @@ Pra projetos assim também aceita sqlite, o que facilita, foi alterado apenas a 
 Pra esse tipo de projeto, talvez pelo conhecimento, achei o Laravel bem mais rápido. O Symfony pela documentação, achei mais flexível, principalmente para realização de queries iniciais.
 
 Acredito ter sido 'tranquilo' pela facilidade que já existe com Laravel. O projeto funciona bem rápido também, mesmo sendo algo simples, e o retorno de erro, mesmo sendo poucos pra esse projeto, é bem definido e fácil pra debugar.
+
+</details>
+
+## License
+
+[MIT](LICENSE) © Guilherme Flores
